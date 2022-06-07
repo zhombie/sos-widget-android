@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="kz.gov.mia.sos.widget.ui.presentation.call.CallActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:background="@color/sos_widget_black" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        style="@style/SOSWidget.AppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sos_widget_transparent"
+        android:elevation="0dp"
+        android:orientation="vertical"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/SOSWidget.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sos_widget_toolbar_height"
+            android:background="@color/sos_widget_white"
+            app:contentInsetStartWithNavigation="0dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/smallImageView"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/sos_widget_shape_gradient_gray"
+                app:shapeAppearanceOverlay="@style/SOSWidget.ShapeAppearance.Circle"
+                app:strokeColor="@color/sos_widget_light_gray"
+                app:strokeWidth="@dimen/sos_widget_border_stroke_width" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/titleView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/SOSWidget.Toolbar.Title.TextAppearance"
+                    tools:text="Оператор" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/subtitleView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/SOSWidget.Toolbar.Subtitle.TextAppearance"
+                    android:visibility="gone"
+                    tools:text="Оператор" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:tabBackground="@color/sos_widget_white"
+            app:tabIndicatorColor="@color/sos_widget_black"
+            app:tabIndicatorFullWidth="true"
+            app:tabMode="fixed"
+            app:tabRippleColor="@color/sos_widget_gray"
+            app:tabSelectedTextColor="@color/sos_widget_black"
+            app:tabTextAppearance="@style/SOSWidget.TabTextAppearance"
+            app:tabTextColor="@color/sos_widget_dark_gray">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sos_widget_text_chat" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sos_widget_map" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/toggleButton"
+            style="@style/SOSWidget.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/sos_widget_button_bg_lime_green_to_soft_green"
+            android:textAllCaps="true"
+            android:textColor="@color/sos_widget_white"
+            android:textSize="12.5sp"
+            android:textStyle="normal"
+            android:visibility="gone"
+            tools:text="Перейти к видеозвонку" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        android:id="@+id/videoCallView"
+        layout="@layout/sos_widget_view_video_call"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/bottom_sheet_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

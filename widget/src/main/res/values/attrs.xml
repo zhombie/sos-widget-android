@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="sos_widget_theme_mode" format="enum">
+        <enum name="light" value="0" />
+        <enum name="dark" value="1" />
+    </attr>
+
+    <attr name="sos_widget_background_color" format="color" />
+    <attr name="sos_widget_title_text_color" format="color" />
+
+    <declare-styleable name="SOSWidgetProgressView">
+        <attr name="sos_widget_background_color" />
+        <attr name="sos_widget_type" format="enum">
+            <enum name="indeterminate" value="0" />
+            <enum name="determinate" value="1" />
+        </attr>
+        <attr name="sos_widget_is_cancelable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="SOSWidgetMessageContentView">
+        <attr name="sos_widget_theme_mode" />
+        <attr name="android:background" />
+        <attr name="sos_widget_title_text_color" />
+    </declare-styleable>
+
+    <declare-styleable name="SOSWidgetMessageAudioPlayerView">
+        <attr name="sos_widget_theme_mode" />
+        <attr name="android:background" />
+        <attr name="sos_widget_title_text_color" />
+        <attr name="sos_widget_time_text_color" format="color" />
+        <attr name="sos_widget_slider_inactive_track_color" format="color" />
+        <attr name="sos_widget_slider_active_track_color" format="color" />
+        <attr name="sos_widget_slider_thumb_color" format="color" />
+    </declare-styleable>
+
+</resources>

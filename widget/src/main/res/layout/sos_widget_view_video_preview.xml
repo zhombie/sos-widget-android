@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sos_widget_black"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:focusable="true">
+
+    <com.google.android.exoplayer2.ui.StyledPlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/closeButton"
+        style="@style/SOSWidget.IconButton"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_gravity="top|end"
+        android:layout_marginLeft="@dimen/sos_widget_horizontal_padding"
+        android:layout_marginTop="@dimen/sos_widget_horizontal_padding"
+        android:layout_marginRight="@dimen/sos_widget_horizontal_padding"
+        android:backgroundTint="@color/sos_widget_light_black"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/sos_widget_ic_close"
+        app:iconSize="25dp"
+        app:iconTint="@color/sos_widget_white" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/sos_widget_horizontal_padding"
+        android:layout_marginRight="@dimen/sos_widget_horizontal_padding"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/sos_widget_white" />
+
+</FrameLayout>

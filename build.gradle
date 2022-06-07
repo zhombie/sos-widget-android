@@ -1,0 +1,149 @@
+buildscript {
+    ext.kotlin_version = '1.6.10'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+
+        // Firebase AppDistribution
+        classpath 'com.google.firebase:firebase-appdistribution-gradle:3.0.2'
+
+        // Firebase Crashlytics
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.0'
+
+        // Google Services
+        classpath 'com.google.gms:google-services:4.3.10'
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
+}
+
+ext.projectArtifactId = { project ->
+    switch (project.name) {
+        case 'coil':
+        case 'widget':
+            return project.name
+    }
+    return null
+}
+
+allprojects {
+    group = 'com.github.zhombie.sos-widget-android'
+    project.ext.version_code = 1
+    version = '1.0.0'
+    project.ext.artifactId = rootProject.ext.projectArtifactId(project)
+
+    if (project.group != null) {
+        if (project.ext.artifactId == null) {
+            println "Group [${project.group}] is set to [${project.name}]"
+        } else {
+            println "Group [${project.group}] is set to [${project.name}] with id [${project.ext.artifactId}]"
+        }
+    }
+}
+
+subprojects { project ->
+    println "Subproject: ${project.name}"
+
+    if (getSampleModuleName(project) != null) return
+
+    apply plugin: 'com.android.library'
+    apply plugin: 'kotlin-android'
+    apply plugin: 'maven-publish'
+
+    android {
+        compileSdkVersion 31
+        buildToolsVersion "31.0.0"
+
+        defaultConfig {
+            minSdkVersion 23
+            targetSdkVersion 31
+
+            versionCode project.ext.version_code
+            versionName project.version
+        }
+
+        buildFeatures {
+            buildConfig false
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_11
+            targetCompatibility JavaVersion.VERSION_11
+        }
+
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_11.toString()
+        }
+
+        configurations.all {
+            resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+                if (details.requested.group == 'org.jetbrains.kotlin') {
+                    details.useVersion kotlin_version
+                }
+            }
+        }
+    }
+
+    afterEvaluate {
+        publishing {
+            publications {
+                aar(MavenPublication) {
+                    groupId project.group
+                    artifactId project.ext.artifactId
+                    version project.version
+
+                    pom {
+                        name = project.name
+                        url = "https://github.com/zhombie/sos-widget-android"
+
+                        developers {
+                            developer {
+                                name = 'zhombie'
+                            }
+                        }
+                    }
+
+                    pom.withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+                        project.configurations.api.allDependencies.each { dependency ->
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', dependency.group)
+                            dependencyNode.appendNode('artifactId', dependency.name)
+                            dependencyNode.appendNode('version', dependency.version)
+                        }
+                    }
+
+//                    from components.release
+                    artifact "$buildDir/outputs/aar/$project.name-release.aar"
+                }
+            }
+        }
+    }
+}
+
+
+static def getSampleModuleName(project) {
+    return getModuleName(project, "sample")
+}
+
+static def getModuleName(project, comparator) {
+    if (project.name == comparator) {
+        println "Project [${project.name}] is processed"
+        return project.name
+    }
+    return null
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

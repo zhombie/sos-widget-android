@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SOSWidget.Chat.Message.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:textAppearance">@style/SOSWidget.Chat.Message.TextView.TextAppearance</item>
+    </style>
+
+    <style name="SOSWidget.Chat.Message.TextView.TextAppearance" parent="SOSWidget.TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/sos_widget_light_black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="SOSWidget.Chat.Message.TimeView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:textAppearance">@style/SOSWidget.Chat.Message.TimeView.TextAppearance</item>
+    </style>
+
+    <style name="SOSWidget.Chat.Message.TimeView.TextAppearance" parent="SOSWidget.TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/sos_widget_cloudy</item>
+        <item name="android:textSize">@dimen/sos_widget_message_time_text_size</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+</resources>

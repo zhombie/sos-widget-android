@@ -1,0 +1,20 @@
+android {
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    resourcePrefix 'sos_widget_'
+}
+
+ext {
+    coil_version = '2.1.0'
+}
+
+dependencies {
+    // Coil
+    api "io.coil-kt:coil:$coil_version"
+    api "io.coil-kt:coil-gif:$coil_version"
+    api "io.coil-kt:coil-video:$coil_version"
+
+    implementation project(':widget')
+}

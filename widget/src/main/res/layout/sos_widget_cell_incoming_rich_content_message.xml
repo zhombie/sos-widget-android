@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/sos_widget_horizontal_padding"
+    android:layout_marginEnd="@dimen/sos_widget_message_horizontal_margin"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sos_widget_bg_top_left_rounded_grayish"
+        android:gravity="start"
+        android:orientation="vertical">
+
+        <kz.gov.mia.sos.widget.ui.component.chat.MessageImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:visibility="gone"
+            tools:src="@tools:sample/backgrounds/scenic"
+            tools:visibility="visible" />
+
+        <kz.gov.mia.sos.widget.ui.component.chat.SOSWidgetMessageContentView
+            android:id="@+id/contentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:sos_widget_theme_mode="light"
+            tools:visibility="visible" />
+
+        <kz.gov.mia.sos.widget.ui.component.chat.SOSWidgetMessageAudioPlayerView
+            android:id="@+id/audioPlayerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:sos_widget_theme_mode="light"
+            tools:visibility="visible" />
+
+        <kz.gov.mia.sos.widget.ui.component.HTMLTextView
+            android:id="@+id/textView"
+            style="@style/SOSWidget.Chat.Message.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sos_widget_message_text_vertical_padding"
+            android:layout_marginBottom="@dimen/sos_widget_message_text_vertical_padding"
+            android:gravity="start"
+            android:paddingLeft="@dimen/sos_widget_message_text_horizontal_padding"
+            android:paddingRight="@dimen/sos_widget_message_text_horizontal_padding"
+            android:visibility="gone"
+            tools:text="👋 Приветствую! Меня зовут Qwerty.\n\nМне нужно несколько секунд, чтобы посмотреть Вашу переписку. Пожалуйста, оставайтесь на линии."
+            tools:visibility="gone" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:itemCount="2"
+        tools:layout_marginTop="10dp"
+        tools:listitem="@layout/sos_widget_cell_inline_button" />
+
+    <kz.gov.mia.sos.widget.ui.component.chat.MessageTimeView
+        android:id="@+id/timeView"
+        style="@style/SOSWidget.Chat.Message.TimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sos_widget_message_time_margin_left"
+        android:layout_marginTop="@dimen/sos_widget_message_time_margin_top"
+        tools:text="04:20" />
+
+</LinearLayout>

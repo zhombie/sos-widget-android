@@ -1,0 +1,117 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="sos_widget_ok" translatable="false">OK</string>
+    <string name="sos_widget_yes">Yes</string>
+    <string name="sos_widget_no">No</string>
+    <string name="sos_widget_cancel">Cancel</string>
+
+    <string name="sos_widget_my_geolocation">My geolocation</string>
+    <string name="sos_widget_text_chat">Text chat</string>
+    <string name="sos_widget_map">Map</string>
+    <string name="sos_widget_satellite">Satellite</string>
+    <string name="sos_widget_hybrid">Hybrid</string>
+    <string name="sos_widget_call_agent">Call agent</string>
+
+    <string name="sos_widget_attention">Attention</string>
+    <string name="sos_widget_message">Message</string>
+    <string name="sos_widget_undefined">Undefined</string>
+    <string name="sos_widget_searching">Searching%s</string>
+
+    <string name="sos_widget_video_call">Video Call</string>
+    <string name="sos_widget_new_message">New message</string>
+    <string name="sos_widget_to_chat">To chat</string>
+    <string name="sos_widget_to_map">To map</string>
+
+    <string name="sos_widget_cancel_pending_call">Cancel call</string>
+    <string name="sos_widget_hangup_call">Hangup call</string>
+
+    <string name="sos_widget_media_selection">Media selection</string>
+    <string name="sos_widget_image">Image</string>
+    <string name="sos_widget_video">Video</string>
+    <string name="sos_widget_audio">Audio</string>
+    <string name="sos_widget_document">Document/file</string>
+
+    <string name="sos_widget_info_arm_map_usage_during_call">* The map is available only during active dialogue with the operator</string>
+    <string name="sos_widget_info_permissions_necessity">
+        Please, grant the application the following permissions:\n\n%s\n\nbecause they are required for the app to work correctly
+    </string>
+    <string name="sos_widget_camera">Camera</string>
+    <string name="sos_widget_microphone">Microphone</string>
+    <string name="sos_widget_location">Location</string>
+    <string name="sos_widget_to_settings">To Settings</string>
+
+    <string name="sos_widget_user_confirmation_end_call">Are you sure you want to end the dialogue?</string>
+
+    <string name="sos_widget_request_welcome_gps_enable">Please enable "Location" function before using the application</string>
+    <string name="sos_widget_request_gps_enable">Please enable "Location" function to provide stable application performance</string>
+
+    <string name="sos_widget_return_to_audio_call">Return to audio call</string>
+    <string name="sos_widget_return_to_video_call">Return to video call</string>
+
+    <string name="sos_widget_open_link">Open link</string>
+    <string name="sos_widget_go_to_link_confirmation">Do you want to open %s ?</string>
+
+    <string name="sos_widget_chat_with_call_agent">Chat with call agent</string>
+
+    <string name="sos_widget_file_download">File download</string>
+    <string name="sos_widget_open_file">Open file</string>
+    <string name="sos_widget_file_pending_download">File is downloading</string>
+    <string name="sos_widget_file_download_cancelled">File download cancelled</string>
+    <string name="sos_widget_file_upload_error">File upload error</string>
+
+    <!--    <string name="sos_widget_error_password_standard">-->
+    <!--        Password must contain 1 digit, 1 upper case letter, 1 special symbol (!@#$%^&amp;()) &amp; no white spaces allowed-->
+    <!--    </string>-->
+    <string name="sos_widget_error_mocked_location">
+        It seems that you are using fake GPS app. Please, turn it off when using an app
+    </string>
+    <string name="sos_widget_error_detect_user_location">An error occurred while getting a geolocation. I will try again</string>
+    <string name="sos_widget_error_audio_data_source">Unable to obtain data information from audio file</string>
+    <string name="sos_widget_error_occurred">An error has occurred</string>
+    <string name="sos_widget_error_file_cannot_be_read">An error has occurred, the file cannot be opened</string>
+    <string name="sos_widget_error_unknown">Unexpected error</string>
+    <string name="sos_widget_error_cannot_create_file">Can\'t create file</string>
+    <string name="sos_widget_error_invalid_output_file">Invalid output file</string>
+    <string name="sos_widget_error_read_permission_denied">Read permission is denied</string>
+    <string name="sos_widget_error_no_available_space">No available space!</string>
+    <string name="sos_widget_error_file_size_exceeds_limit">File size exceeds limit! Maximum allowed size is %d mb</string>
+
+    <string name="sos_widget_button_title">Need emergency help?</string>
+    <string name="sos_widget_button_subtitle">Press the button to call</string>
+
+    <string name="sos_widget_connection_in_progress">Connecting to operator</string>
+    <string name="sos_widget_waiting_for_call_agent">Waiting for operator</string>
+    <string name="sos_widget_connected">Connection established</string>
+
+    <string name="sos_widget_info_attach_media_available_on_active_conversation">Attaching media files is only available during an active conversation</string>
+
+    <string name="sos_widget_arm_new_card_created">Created a card for assigning a crew</string>
+    <string name="sos_widget_arm_force_assigned">The police crew assigned by your call</string>
+    <string name="sos_widget_arm_assigned_force_on_spot">The police crew on site</string>
+    <string name="sos_widget_arm_operation_completed">Completed</string>
+    <string name="sos_widget_arm_call_time">Call time:</string>
+    <string name="sos_widget_arm_force_directed">The police crew directed to you</string>
+
+    <string name="sos_widget_permission_settings">Permission settings</string>
+    <string name="sos_widget_info_video_call_terms">The operator is not visible during a video call. The conversation between you and the operator is being recorded</string>
+
+    <string name="sos_widget_info_connection_interrupted" tools:ignore="TypographyEllipsis">Connection interrupted, reconnection is in progress ...</string>
+    <string name="sos_widget_info_call_low_speaker_volume">You will not hear the call agent, please turn up the speaker volume</string>
+
+    <string name="sos_widget_copied">Copied</string>
+    <string name="sos_widget_user_cancelled_call">User cancelled call</string>
+    <string name="sos_widget_user_ended_call">User ended call</string>
+
+    <string name="sos_widget_arm_force_number">Crew number</string>
+
+    <string name="sos_widget_welcome_text_title">
+        «SOS» button
+    </string>
+
+    <string name="sos_widget_welcome_text_description">
+        ATTENTION! Use the SOS button for emergency calls only.
+        The call will be directed to the Operations Center according to your location.
+        Video call is being recorded
+    </string>
+
+</resources>

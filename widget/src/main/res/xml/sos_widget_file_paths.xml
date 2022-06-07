@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path name="sos_widget_external_path" path="." />
+    <external-files-path name="sos_widget_external_files_path" path="." />
+    <cache-path name="sos_widget_cache_path" path="." />
+    <files-path name="sos_widget_files_path" path="." />
+</paths>

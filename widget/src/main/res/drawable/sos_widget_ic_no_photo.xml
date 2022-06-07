@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <item
+        android:width="100dp"
+        android:height="100dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#F6F6F6" />
+        </shape>
+    </item>
+
+    <item
+        android:width="26dp"
+        android:height="26dp"
+        android:gravity="center"
+        android:drawable="@drawable/sos_widget_ic_person" />
+
+</layer-list>

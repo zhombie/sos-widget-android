@@ -1,0 +1,149 @@
+plugins {
+    id 'com.android.application'
+
+    id 'kotlin-android'
+
+    // [Firebase]
+    // Firebase AppDistribution
+    id 'com.google.firebase.appdistribution'
+    // Firebase Crashlytics
+    id 'com.google.firebase.crashlytics'
+
+    // Google Services
+    id 'com.google.gms.google-services'
+}
+
+def properties = new Properties()
+properties.load(new FileInputStream(rootProject.file('local.properties')))
+def baseUrl = properties.getProperty('base_url') ?: '"http://localhost"'
+def socketUrl = properties.getProperty('socket.url') ?: '"http://localhost"'
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion '31.0.0'
+
+    defaultConfig {
+        applicationId 'kz.gov.mia.sos.widget'
+
+        minSdkVersion 23
+        targetSdkVersion 31
+
+        versionCode project.ext.version_code
+        versionName project.version
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+        }
+
+        release {
+            minifyEnabled false
+            shrinkResources false
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    flavorDimensions 'mode'
+
+    productFlavors {
+        dev {
+            dimension 'mode'
+
+            applicationIdSuffix '.dev'
+
+            // Define constants
+            buildConfigField 'boolean', 'DEBUG', 'true'
+            buildConfigField 'boolean', 'LOG', 'true'
+            buildConfigField 'String', 'BASE_URL', baseUrl
+            buildConfigField 'String', 'SOCKET_URL', socketUrl
+
+            // Define resources
+            resValue 'string', 'app_name', '102 Widget DEV'
+
+            firebaseAppDistribution {
+                appId = '1:225385159362:android:a17e49e6d63006e360395b'
+                groups = 'inqbox'
+                serviceCredentialsFile = project.file("creds/sos-widget-iim-qr-6ee207f07514.json")
+                releaseNotesFile = "$rootDir/sample/src/dev/release-notes.txt"
+            }
+        }
+
+        prod {
+            dimension 'mode'
+
+            // Define constants
+            buildConfigField 'boolean', 'DEBUG', 'false'
+            buildConfigField 'boolean', 'LOG', 'false'
+            buildConfigField 'String', 'BASE_URL', baseUrl
+            buildConfigField 'String', 'SOCKET_URL', socketUrl
+
+            // Define resources
+            resValue 'string', 'app_name', '102 Widget'
+
+            firebaseAppDistribution {
+                appId = '1:225385159362:android:ac19559568dd1f1f60395b'
+                groups = 'inqbox'
+                serviceCredentialsFile = project.file("creds/sos-widget-iim-qr-6ee207f07514.json")
+                releaseNotesFile = "$rootDir/sample/src/prod/release-notes.txt"
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.jetbrains.kotlin') {
+                details.useVersion kotlin_version
+            }
+        }
+    }
+
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // AppCompat
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+
+    // Jetpack Core
+    implementation 'androidx.core:core-ktx:1.8.0'
+
+    // Material Design Components
+    implementation 'com.google.android.material:material:1.6.1'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.11'
+
+    // LeakCanary
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+
+    def isRemoteDependencyEnabled = false
+
+    if (isRemoteDependencyEnabled) {
+        def libraryVersion = project.version
+        implementation "com.github.zhombie.sos-widget-android:coil:$libraryVersion"
+        implementation "com.github.zhombie.sos-widget-android:widget:$libraryVersion"
+    } else {
+        implementation project(':coil')
+        implementation project(':widget')
+    }
+}

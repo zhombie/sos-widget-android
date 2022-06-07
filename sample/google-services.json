@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "225385159362",
+    "project_id": "sos-widget-iim-qr",
+    "storage_bucket": "sos-widget-iim-qr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225385159362:android:85a7a8a4713f625160395b",
+        "android_client_info": {
+          "package_name": "kz.gov.mia.sos.widget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225385159362-dt2h7jv927gjn4h5e4bukcv2ghqbds53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjVdp2Qy2ACeHsLJPvARGpgJLVipZG5pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225385159362-dt2h7jv927gjn4h5e4bukcv2ghqbds53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225385159362:android:9c0ebddd52eb1eb760395b",
+        "android_client_info": {
+          "package_name": "kz.gov.mia.sos.widget.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225385159362-dt2h7jv927gjn4h5e4bukcv2ghqbds53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjVdp2Qy2ACeHsLJPvARGpgJLVipZG5pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225385159362-dt2h7jv927gjn4h5e4bukcv2ghqbds53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

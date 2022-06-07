@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="sos_widget_yes">Иә</string>
+    <string name="sos_widget_no">Жоқ</string>
+    <string name="sos_widget_cancel">Болдырмау</string>
+
+    <string name="sos_widget_my_geolocation">Менің тұрған жерім</string>
+    <string name="sos_widget_text_chat">Мәтіндік чат</string>
+    <string name="sos_widget_map">Карта</string>
+    <string name="sos_widget_satellite">Спутник</string>
+    <string name="sos_widget_hybrid">Гибрид</string>
+    <string name="sos_widget_call_agent">Оператор</string>
+
+    <string name="sos_widget_media_selection">Құжат таңдау</string>
+    <string name="sos_widget_image">Сурет</string>
+    <string name="sos_widget_video">Бейне</string>
+    <string name="sos_widget_audio">Аудио</string>
+    <string name="sos_widget_document">Құжат/файл</string>
+
+    <string name="sos_widget_attention">Назар аударыңыз</string>
+    <string name="sos_widget_message">Хабарлама</string>
+    <string name="sos_widget_undefined">Белгісіз</string>
+    <string name="sos_widget_searching">Ізделінуде%s</string>
+
+    <string name="sos_widget_video_call">Бейне байланыс</string>
+    <string name="sos_widget_new_message">Жаңа хабарлама</string>
+    <string name="sos_widget_to_chat">Чатқа</string>
+    <string name="sos_widget_to_map">Картаға</string>
+
+    <string name="sos_widget_cancel_pending_call">Қоңыраудан бас тарту</string>
+    <string name="sos_widget_hangup_call">Қоңырауды аяқтау</string>
+
+    <string name="sos_widget_info_arm_map_usage_during_call">Карта оператормен белсенді диалог кезінде ғана қол жетімді</string>
+    <string name="sos_widget_info_permissions_necessity">
+        Өтініш, келесі функционалдарды пайдалануға рұқсат беріңіз:\n\n%s\n\nөйткені олар қосымшаның қатесіз жұмыс істеуі үшін өте маңызды
+    </string>
+    <string name="sos_widget_camera">Камера</string>
+    <string name="sos_widget_microphone">Микрофон</string>
+    <string name="sos_widget_location">Тұрған жері</string>
+    <string name="sos_widget_to_settings">Баптауларға</string>
+
+    <string name="sos_widget_user_confirmation_end_call">Сіз шынымен диалогты аяқтағыңыз келе ме?</string>
+
+    <string name="sos_widget_request_welcome_gps_enable">Өтініш, қосымшаны қолданбас бұрын "Менің тұрған жерім" функциясын қосыңыз</string>
+    <string name="sos_widget_request_gps_enable">Өтініш, қосымшаның тұрақты жұмысын қамтамасыз ету үшін «Менің тұрған жерім» функциясын қосыңыз</string>
+
+    <string name="sos_widget_return_to_audio_call">Аудио қоңырауға қайта оралу</string>
+    <string name="sos_widget_return_to_video_call">Бейне қоңырауға қайта оралу</string>
+
+    <string name="sos_widget_open_link">Сілтемеге өту</string>
+    <string name="sos_widget_go_to_link_confirmation">Шынымен %s сілтемесі арқылы өткіңіз келе ме?</string>
+
+    <string name="sos_widget_chat_with_call_agent">Оператормен чат арқылы сөйлесу</string>
+
+    <string name="sos_widget_file_download">Файлды жүктеу</string>
+    <string name="sos_widget_open_file">Файлды ашу</string>
+    <string name="sos_widget_file_pending_download">Файл жүктелуде</string>
+    <string name="sos_widget_file_download_cancelled">File download cancelled</string>
+    <string name="sos_widget_file_upload_error">Файлды жүктеу кезінде қателік орын алды</string>
+
+    <!--    <string name="sos_widget_error_password_standard">-->
+    <!--        Жасырын сөзде 1 сан, 1 бас әріп, 1 арнайы таңба болуы керек (!@#$%^&amp;()) және бос орындарды пайдалануға болмайды-->
+    <!--    </string>-->
+    <string name="sos_widget_error_mocked_location">
+        Сіз жалған GPS қолданбасын қолданып жатқан сияқтысыз. Қосымшаны пайдалану кезінде оны өшіріңіз
+    </string>
+    <string name="sos_widget_error_detect_user_location">Тұрған жер туралы ақпарат жүктеу кезінде ақаулық орын алды. Тағы да бір мүмкіндік жасалынады</string>
+    <string name="sos_widget_error_audio_data_source">Дыбыстық файлдан мәліметтер алу мүмкін емес</string>
+    <string name="sos_widget_error_occurred">Қателік орын алды</string>
+    <string name="sos_widget_error_file_cannot_be_read">Қате, файлды ашу мүмкін емес</string>
+    <string name="sos_widget_error_unknown">Күтпеген қате</string>
+    <string name="sos_widget_error_cannot_create_file">Жаңа файлды өңдеу мүмкін емес</string>
+    <string name="sos_widget_error_invalid_output_file">Жарамсыз шығыс файлы</string>
+    <string name="sos_widget_error_read_permission_denied">Рұқсат беруден бас тартылды</string>
+    <string name="sos_widget_error_no_available_space">Бос орын жоқ!</string>
+    <string name="sos_widget_error_file_size_exceeds_limit">Файл өлшемі шектен асып кетті! Ең үлкен рұқсат етілген өлшем – %d мб</string>
+
+    <string name="sos_widget_button_title">Жедел көмек керек пе?</string>
+    <string name="sos_widget_button_subtitle">Қоңырау шалу үшін батырманы басыңыз</string>
+
+    <string name="sos_widget_connection_in_progress">Операторға қосылу</string>
+    <string name="sos_widget_waiting_for_call_agent">Операторды күту</string>
+    <string name="sos_widget_connected">Байланыс орнады</string>
+
+    <string name="sos_widget_info_attach_media_available_on_active_conversation">Медиа файлдарды тіркеу тек белсенді сөйлесу кезінде қол жетімді</string>
+
+    <string name="sos_widget_arm_new_card_created">Экипажды тағайындау картасы жасалды</string>
+    <string name="sos_widget_arm_force_assigned">Сіздің шақыруыңыз бойынша полиция экипажы жолға шықты</string>
+    <string name="sos_widget_arm_assigned_force_on_spot">Экипаж орнында</string>
+    <string name="sos_widget_arm_operation_completed">Аяқталды</string>
+    <string name="sos_widget_arm_call_time">Қоңырау уақыты:</string>
+    <string name="sos_widget_arm_force_directed">Сіздің қоңырауыңыз бойынша полиция экипажы аттанды</string>
+
+    <string name="sos_widget_permission_settings">Қосымшаның рұқсат баптаулары</string>
+    <string name="sos_widget_info_video_call_terms">Бейне қоңырау кезінде оператор көрінбейді. Оператор мен сіздің араңыздағы әңгіме жазылады</string>
+
+    <string name="sos_widget_info_connection_interrupted" tools:ignore="TypographyEllipsis">Байланыс үзілді, қайта қосу жалғасуда ...</string>
+    <string name="sos_widget_info_call_low_speaker_volume">Сіз операторды естімеуіңіз мүмкін, динамиктің дыбыс деңгейін көтеруіңізді сұраймыз</string>
+
+    <string name="sos_widget_copied">Көшірілді</string>
+    <string name="sos_widget_user_cancelled_call">Пайдаланушы қоңыраудан бас тартты</string>
+    <string name="sos_widget_user_ended_call">Пайдаланушы қоңырауды аяқтады</string>
+
+    <string name="sos_widget_arm_force_number">Экипаж нөмірі</string>
+
+    <string name="sos_widget_welcome_text_title">
+        «SOS» батырмасы
+    </string>
+
+    <string name="sos_widget_welcome_text_description">
+        НАЗАР АУДАРЫҢЫЗ! SOS батырмасын тек жедел қоңыраулар үшін пайдаланыңыз.
+        Қоңырау сіздің орналасқан жеріңізге сәйкес жедел басқару орталығына жіберіледі.
+        Бейне қоңырау жазылады
+    </string>
+
+</resources>

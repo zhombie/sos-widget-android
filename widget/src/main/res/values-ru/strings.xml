@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="sos_widget_yes">Да</string>
+    <string name="sos_widget_no">Нет</string>
+    <string name="sos_widget_cancel">Отмена</string>
+
+    <string name="sos_widget_my_geolocation">Мое местоположение</string>
+    <string name="sos_widget_text_chat">Текстовый чат</string>
+    <string name="sos_widget_map">Карта</string>
+    <string name="sos_widget_satellite">Спутник</string>
+    <string name="sos_widget_hybrid">Гибрид</string>
+    <string name="sos_widget_call_agent">Оператор</string>
+
+    <string name="sos_widget_media_selection">Выбор вложения</string>
+    <string name="sos_widget_image">Фото</string>
+    <string name="sos_widget_video">Видео</string>
+    <string name="sos_widget_audio">Аудио</string>
+    <string name="sos_widget_document">Документ/файл</string>
+
+    <string name="sos_widget_attention">Внимание</string>
+    <string name="sos_widget_message">Сообщение</string>
+    <string name="sos_widget_undefined">Неизвестно</string>
+    <string name="sos_widget_searching">Идет поиск%s</string>
+
+    <string name="sos_widget_video_call">Видеозвонок</string>
+    <string name="sos_widget_new_message">Новое сообщение</string>
+    <string name="sos_widget_to_chat">К чату</string>
+    <string name="sos_widget_to_map">К карте</string>
+
+    <string name="sos_widget_cancel_pending_call">Отменить звонок</string>
+    <string name="sos_widget_hangup_call">Завершить звонок</string>
+
+    <string name="sos_widget_info_arm_map_usage_during_call">* Карта доступна только во время активного диалога с оператором</string>
+    <string name="sos_widget_info_permissions_necessity">
+        Пожалуйста, предоставьте приложению следующие разрешения:\n\n%s\n\nтак как они крайне необходимы для корректной работы приложения
+    </string>
+    <string name="sos_widget_camera">Камера</string>
+    <string name="sos_widget_microphone">Микрофон</string>
+    <string name="sos_widget_location">Местоположение</string>
+    <string name="sos_widget_to_settings">В Настройки</string>
+
+    <string name="sos_widget_user_confirmation_end_call">Вы действительно хотите завершить диалог?</string>
+
+    <string name="sos_widget_request_welcome_gps_enable">Пожалуйста, включите функцию "Местоположение" перед тем как использовать приложение</string>
+    <string name="sos_widget_request_gps_enable">Пожалуйста, включите функцию "Местоположение" для предоставления стабильной работы приложения</string>
+
+    <string name="sos_widget_return_to_audio_call">Вернуться к аудиозвонку</string>
+    <string name="sos_widget_return_to_video_call">Вернуться к видеозвонку</string>
+
+    <string name="sos_widget_open_link">Открыть ссылку</string>
+    <string name="sos_widget_go_to_link_confirmation">Вы хотите открыть %s ?</string>
+
+    <string name="sos_widget_chat_with_call_agent">Чат с оператором</string>
+
+    <string name="sos_widget_file_download">Загрузить файл</string>
+    <string name="sos_widget_open_file">Открыть файл</string>
+    <string name="sos_widget_file_pending_download">Файл загружается</string>
+    <string name="sos_widget_file_download_cancelled">Загрузка файла отменена</string>
+    <string name="sos_widget_file_upload_error">Ошибка при загрузке файла</string>
+
+    <!--    <string name="sos_widget_error_password_standard">-->
+    <!--        Пароль должен содержать 1 цифру, 1 букву в верхнем регистре, 1 специальный символ (!@#$%^&amp;()) и не допускается использование пробелов-->
+    <!--    </string>-->
+    <string name="sos_widget_error_mocked_location">
+        Похоже, вы используете поддельное приложение GPS. Пожалуйста, выключите его при использовании приложения
+    </string>
+    <string name="sos_widget_error_detect_user_location">Ошибка при получении геопозиции. Попробую еще раз</string>
+    <string name="sos_widget_error_audio_data_source">Невозможно получить информацию о данных из аудиофайла</string>
+    <string name="sos_widget_error_occurred">Произошла ошибка</string>
+    <string name="sos_widget_error_file_cannot_be_read">Произошла ошибка, невозможно открыть файл</string>
+    <string name="sos_widget_error_unknown">Непредвиденная ошибка</string>
+    <string name="sos_widget_error_cannot_create_file">Не получается создать файл</string>
+    <string name="sos_widget_error_invalid_output_file">Неверный выходной файл</string>
+    <string name="sos_widget_error_read_permission_denied">Отказано в чтении</string>
+    <string name="sos_widget_error_no_available_space">Нет свободного места!</string>
+    <string name="sos_widget_error_file_size_exceeds_limit">Размер файла превышает лимит! Максимально допустимый размер: %d мб</string>
+
+    <string name="sos_widget_button_title">Нужна экстренная помощь?</string>
+    <string name="sos_widget_button_subtitle">Нажмите кнопку, чтобы позвонить</string>
+
+    <string name="sos_widget_connection_in_progress">Соединяем с оператором</string>
+    <string name="sos_widget_waiting_for_call_agent">Ожидание оператора</string>
+    <string name="sos_widget_connected">Связь установлена</string>
+
+    <string name="sos_widget_info_attach_media_available_on_active_conversation">Прикрепление медиафайлов доступно только во время активного диалога</string>
+
+    <string name="sos_widget_arm_new_card_created">Создана карта для назначения экипажа</string>
+    <string name="sos_widget_arm_force_assigned">По вашему вызову выехал экипаж полиции</string>
+    <string name="sos_widget_arm_assigned_force_on_spot">Экипаж на месте</string>
+    <string name="sos_widget_arm_operation_completed">Завершено</string>
+    <string name="sos_widget_arm_call_time">Время вызова:</string>
+    <string name="sos_widget_arm_force_directed">По вашему вызову выехал экипаж полиции</string>
+
+    <string name="sos_widget_permission_settings">Настройки разрешений</string>
+    <string name="sos_widget_info_video_call_terms">При видео-звонке оператора не видно. Разговор между Вами и оператором записывается</string>
+
+    <string name="sos_widget_info_connection_interrupted" tools:ignore="TypographyEllipsis">Соединение прервано, идет переподключение...</string>
+    <string name="sos_widget_info_call_low_speaker_volume">Вы не будете слышать оператора, пожалуйста, увеличьте громкость динамика</string>
+
+    <string name="sos_widget_copied">Скопировано</string>
+    <string name="sos_widget_user_cancelled_call">Пользователь отменил звонок</string>
+    <string name="sos_widget_user_ended_call">Пользователь завершил звонок</string>
+
+    <string name="sos_widget_arm_force_number">Номер экипажа</string>
+
+    <string name="sos_widget_welcome_text_title">
+        Кнопка «SOS»
+    </string>
+
+    <string name="sos_widget_welcome_text_description">
+        ВНИМАНИЕ! Используйте кнопку SOS только для экстренных вызовов.
+        Вызов будет адресован центру оперативного управления согласно Вашему местоположению.
+        Видео-вызов записывается
+    </string>
+
+</resources>

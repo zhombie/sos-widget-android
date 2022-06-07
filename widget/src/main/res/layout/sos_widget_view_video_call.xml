@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sos_widget_black"
+    tools:context="kz.gov.mia.sos.widget.ui.presentation.call.CallActivity">
+
+    <kz.inqbox.sdk.webrtc.core.ui.SurfaceViewRenderer
+        android:id="@+id/surfaceViewRenderer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/sos_widget_bg_linear_gradient_black">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/toggleCameraButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="@dimen/sos_widget_call_control_button_size"
+            android:layout_height="@dimen/sos_widget_call_control_button_size"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="@color/sos_widget_button_bg_white_to_purple_blue"
+            android:elevation="10dp"
+            app:icon="@drawable/sos_widget_ic_camera_on_stroke_blue"
+            app:iconTint="@color/sos_widget_button_text_purple_blue_to_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/toggleAudioButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/toggleAudioButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="@dimen/sos_widget_call_control_button_size"
+            android:layout_height="@dimen/sos_widget_call_control_button_size"
+            android:backgroundTint="@color/sos_widget_button_bg_white_to_purple_blue"
+            android:elevation="10dp"
+            app:icon="@drawable/sos_widget_ic_mic_on_stroke_blue"
+            app:iconTint="@color/sos_widget_button_text_purple_blue_to_white"
+            app:layout_constraintBottom_toBottomOf="@id/toggleCameraButton"
+            app:layout_constraintLeft_toRightOf="@id/toggleCameraButton"
+            app:layout_constraintRight_toLeftOf="@id/toggleCameraSourceButton"
+            app:layout_constraintTop_toTopOf="@id/toggleCameraButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/toggleCameraSourceButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="@dimen/sos_widget_call_control_button_size"
+            android:layout_height="@dimen/sos_widget_call_control_button_size"
+            android:backgroundTint="@color/sos_widget_button_bg_white_to_purple_blue"
+            android:elevation="10dp"
+            app:icon="@drawable/sos_widget_ic_switch_camera_stroke_blue"
+            app:iconTint="@color/sos_widget_button_text_purple_blue_to_white"
+            app:layout_constraintBottom_toBottomOf="@id/toggleCameraButton"
+            app:layout_constraintLeft_toRightOf="@id/toggleAudioButton"
+            app:layout_constraintRight_toLeftOf="@id/hangupButton"
+            app:layout_constraintTop_toTopOf="@id/toggleCameraButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/hangupButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="@dimen/sos_widget_call_control_button_size"
+            android:layout_height="@dimen/sos_widget_call_control_button_size"
+            android:backgroundTint="@color/sos_widget_button_bg_red_to_white"
+            android:elevation="10dp"
+            app:icon="@drawable/sos_widget_ic_phone_hangup_white"
+            app:iconTint="@color/sos_widget_button_text_white_to_red"
+            app:layout_constraintBottom_toBottomOf="@id/toggleCameraButton"
+            app:layout_constraintLeft_toRightOf="@id/toggleCameraSourceButton"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toggleCameraButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/minimizeButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="26dp"
+            android:backgroundTint="@color/sos_widget_button_bg_transparent_to_gray"
+            android:padding="10dp"
+            app:icon="@drawable/sos_widget_ic_caret_down_white_22dp"
+            app:iconTint="@color/sos_widget_white"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reminderButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/sos_widget_button_bg_transparent_to_gray"
+            android:padding="10dp"
+            app:icon="@drawable/sos_widget_ic_info_filled"
+            app:iconSize="26dp"
+            app:iconTint="@color/sos_widget_white"
+            app:layout_constraintBottom_toBottomOf="@id/minimizeButton"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@id/guideline"
+            app:layout_constraintRight_toLeftOf="@id/mapButton"
+            app:layout_constraintTop_toTopOf="@id/minimizeButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mapButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2.5dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/sos_widget_button_bg_transparent_to_gray"
+            android:padding="10dp"
+            app:icon="@drawable/sos_widget_ic_placeholder"
+            app:iconSize="22dp"
+            app:iconTint="@color/sos_widget_white"
+            app:layout_constraintBottom_toBottomOf="@id/reminderButton"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@id/reminderButton"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/reminderButton" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/toggleCameraButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/minimizeButton"
+            app:layout_constraintVertical_bias="0.15">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/largeImageView"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                android:layout_marginBottom="18dp"
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sos_widget_ic_no_photo"
+                app:shapeAppearanceOverlay="@style/SOSWidget.ShapeAppearance.Circle"
+                app:strokeColor="@color/sos_widget_white"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/sos_widget_video_call"
+                android:textColor="@color/sos_widget_white"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:fontFamily="sans-serif-medium"
+                tools:text="Приходько Валентин" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/statusView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/sos_widget_white"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:fontFamily="sans-serif"
+                tools:text="@string/sos_widget_connection_in_progress" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/reminderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <kz.gov.mia.sos.widget.ui.component.ReminderView
+            android:id="@+id/reminderView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp" />
+
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.presentation.call.map.ARMMapFragment">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mapView"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@tools:sample/backgrounds/scenic" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:rippleColor="@color/sos_widget_transparent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/sos_widget_ic_shield_blue"
+                app:layout_constraintBottom_toBottomOf="@id/pastTimeValueView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/pastTimeLabelView"
+                app:layout_constraintTop_toTopOf="@id/pastTimeLabelView"
+                app:layout_constraintVertical_bias="0.25" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/pastTimeLabelView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/sos_widget_arm_call_time"
+                android:textAppearance="@style/SOSWidget.TextAppearance.Info.Value"
+                app:layout_constraintBottom_toTopOf="@id/pastTimeValueView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toRightOf="@id/imageView"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/pastTimeValueView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textAppearance="@style/SOSWidget.TextAppearance.Info.Value"
+                app:layout_constraintBottom_toTopOf="@id/infoTextView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@id/pastTimeLabelView"
+                app:layout_constraintRight_toRightOf="@id/pastTimeLabelView"
+                app:layout_constraintTop_toBottomOf="@id/pastTimeLabelView"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="09:15" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/infoTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0.0"
+                android:lineSpacingExtra="2sp"
+                android:text="@string/sos_widget_arm_force_directed"
+                android:textAllCaps="true"
+                android:textColor="@color/sos_widget_light_black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif"
+                app:layout_constraintBottom_toTopOf="@id/recyclerView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:textAllCaps="true" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                android:splitMotionEvents="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/expandButton"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/infoTextView"
+                tools:itemCount="2"
+                tools:listitem="@layout/sos_widget_cell_marker" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/expandButton"
+                style="@style/SOSWidget.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                app:icon="@drawable/sos_widget_ic_caret_down_white"
+                app:iconGravity="textEnd"
+                app:iconPadding="0dp"
+                app:iconTint="@color/sos_widget_purple_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mapTypeButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#40000000"
+            android:ellipsize="end"
+            app:icon="@drawable/sos_widget_ic_layers"
+            app:iconSize="20dp"
+            app:iconTint="@color/sos_widget_white"
+            app:rippleColor="@color/sos_widget_gray" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/selfLocationButton"
+            style="@style/SOSWidget.CircleIconButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#40000000"
+            android:ellipsize="end"
+            app:icon="@drawable/sos_widget_ic_geolocation"
+            app:iconSize="20dp"
+            app:iconTint="@color/sos_widget_white"
+            app:rippleColor="@color/sos_widget_gray" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/overlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#95000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-medium"
+            android:text="Приостановлено"
+            android:textColor="@color/sos_widget_white"
+            android:textSize="21sp"
+            android:textStyle="normal"
+            app:fontFamily="sans-serif-medium" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/descriptionView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="25dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/sos_widget_info_arm_map_usage_during_call"
+            android:textColor="@color/sos_widget_white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:fontFamily="sans-serif-medium" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

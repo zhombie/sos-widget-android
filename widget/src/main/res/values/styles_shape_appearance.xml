@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SOSWidget.BaseShapeAppearance" parent="ShapeAppearance.MaterialComponents" />
+
+    <style name="SOSWidget.ShapeAppearance.Circle" parent="SOSWidget.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="SOSWidget.ShapeAppearance.Rounded.Small" parent="SOSWidget.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="SOSWidget.ShapeAppearance.Rounded.Medium" parent="SOSWidget.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18.9dp</item>
+    </style>
+
+    <style name="SOSWidget.ShapeAppearance.Rounded.Large" parent="SOSWidget.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">26dp</item>
+    </style>
+
+    <style name="SOSWidget.ShapeAppearance.Rounded.Huge" parent="SOSWidget.BaseShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">33dp</item>
+    </style>
+
+</resources>

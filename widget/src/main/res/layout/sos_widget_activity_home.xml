@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sos_widget_ghost_white"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.presentation.home.HomeActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="1sp"
+                android:text="@string/sos_widget_button_title"
+                android:textColor="@color/sos_widget_dark_purple"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:fontFamily="sans-serif" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/subtitleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:letterSpacing="0"
+                android:text="@string/sos_widget_button_subtitle"
+                android:textColor="@color/sos_widget_gull_gray"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:fontFamily="sans-serif-medium" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/sosButton"
+                android:layout_width="285dp"
+                android:layout_height="285dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="-10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/sos_widget_ic_sos_circle" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sos_widget_horizontal_padding"
+                android:layout_marginEnd="@dimen/sos_widget_horizontal_padding"
+                app:cardBackgroundColor="@color/sos_widget_purple_blue"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:contentPaddingBottom="20dp"
+                app:contentPaddingLeft="20dp"
+                app:contentPaddingRight="20dp"
+                app:contentPaddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/sos_widget_welcome_text_title"
+                        android:textColor="@color/sos_widget_white"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:lineSpacingExtra="1sp"
+                        android:text="@string/sos_widget_welcome_text_description"
+                        android:textColor="@color/sos_widget_white"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        style="@style/SOSWidget.UnelevatedButton"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center_horizontal"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:backgroundTint="@color/sos_widget_white"-->
+<!--                        android:text="Download"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/sos_widget_purple_blue"-->
+<!--                        android:textSize="13sp"-->
+<!--                        app:cornerRadius="25dp" />-->
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        style="@style/SOSWidget.AppBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sos_widget_transparent"
+        android:elevation="0dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/SOSWidget.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/sos_widget_ripple_rounded_transparent_26dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="4dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/locationValueView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-medium"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.0"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/sos_widget_light_slate_gray"
+                        android:textSize="11sp"
+                        android:textStyle="normal"
+                        tools:ignore="SmallSp"
+                        tools:text="Нур-Султан, Казахстан" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2.5dp"
+                        android:ellipsize="end"
+                        android:fontFamily="sans-serif-medium"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.0"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/sos_widget_my_geolocation"
+                        android:textColor="@color/sos_widget_red"
+                        android:textSize="11sp"
+                        android:textStyle="normal"
+                        tools:ignore="SmallSp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/sos_widget_ic_marker_red" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <kz.gov.mia.sos.widget.ui.component.SOSWidgetProgressView
+        android:id="@+id/progressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:sos_widget_is_cancelable="false"
+        app:sos_widget_type="indeterminate" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
