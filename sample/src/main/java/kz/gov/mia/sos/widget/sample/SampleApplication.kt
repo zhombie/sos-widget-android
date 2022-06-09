@@ -5,14 +5,21 @@ import android.content.res.Configuration
 import kz.gov.mia.sos.widget.api.image.load.SOSWidgetImageLoader
 import kz.gov.mia.sos.widget.api.locale.SOSWidgetLocaleManager
 import kz.gov.mia.sos.widget.coil.CoilImageLoader
-import java.util.*
+import kz.inqbox.sdk.domain.model.language.Language
 
 class SampleApplication : Application(), SOSWidgetImageLoader.Factory {
 
     override fun onCreate() {
         super.onCreate()
 
-        SOSWidgetLocaleManager.initialize(this, listOf(Locale.ENGLISH))
+        SOSWidgetLocaleManager.initialize(
+            this,
+            listOf(
+                Language.ENGLISH.locale,
+                Language.KAZAKH.locale,
+                Language.RUSSIAN.locale,
+            )
+        )
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
