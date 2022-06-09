@@ -5,6 +5,10 @@
     <string name="sos_widget_no">Нет</string>
     <string name="sos_widget_cancel">Отмена</string>
 
+    <string name="sos_widget_refresh">Обновить</string>
+    <string name="sos_widget_copy">Скопировать</string>
+    <string name="sos_widget_close">Закрыть</string>
+
     <string name="sos_widget_my_geolocation">Мое местоположение</string>
     <string name="sos_widget_text_chat">Текстовый чат</string>
     <string name="sos_widget_map">Карта</string>
@@ -78,6 +82,12 @@
 
     <string name="sos_widget_button_title">Нужна экстренная помощь?</string>
     <string name="sos_widget_button_subtitle">Нажмите кнопку, чтобы позвонить</string>
+
+    <string name="sos_widget_latitude">Широта</string>
+    <string name="sos_widget_longitude">Долгота</string>
+    <string name="sos_widget_latitude_and_longitude">Широта: %1$f\nДолгота: %2$f</string>
+    <string name="sos_widget_location_accuracy">Точность: %.2f m</string>
+    <string name="sos_widget_location_elapsed_time">Пройденное время: %s</string>
 
     <string name="sos_widget_connection_in_progress">Соединяем с оператором</string>
     <string name="sos_widget_waiting_for_call_agent">Ожидание оператора</string>

@@ -273,6 +273,36 @@ class HomeViewModel constructor(
         }
     }
 
+    fun onLocationShow() {
+        io.launch {
+            val location = locationRepository.getLastFoundLocation()
+            val geocode = locationRepository.getLastFoundGeocode()
+            if (location == null || geocode == null) {
+                withContext(ui) {
+                    message.value = HomeScreen.Message.Location.UnableToDetermine
+                }
+            } else {
+                withContext(ui) {
+                    route.value = HomeScreen.Route.LocationDetails(
+                        displayAddress = geocode.displayName,
+                        location = location
+                    )
+                }
+            }
+        }
+    }
+
+    fun onRefreshLocationDataRequested() {
+        io.launch {
+            locationRepository.clear()
+
+            withContext(ui) {
+                geocode.value = null
+                command.value = HomeScreen.Command.RequestLocation
+            }
+        }
+    }
+
     fun onSOSButtonPressed() {
         io.launch {
             if (socketRepository.isConnected()) {

@@ -4,6 +4,10 @@
     <string name="sos_widget_no">Жоқ</string>
     <string name="sos_widget_cancel">Болдырмау</string>
 
+    <string name="sos_widget_refresh">Жаңадан жүктеу</string>
+    <string name="sos_widget_copy">Көшіріп алу</string>
+    <string name="sos_widget_close">Жабу</string>
+
     <string name="sos_widget_my_geolocation">Менің тұрған жерім</string>
     <string name="sos_widget_text_chat">Мәтіндік чат</string>
     <string name="sos_widget_map">Карта</string>
@@ -77,6 +81,12 @@
 
     <string name="sos_widget_button_title">Жедел көмек керек пе?</string>
     <string name="sos_widget_button_subtitle">Қоңырау шалу үшін батырманы басыңыз</string>
+
+    <string name="sos_widget_latitude">Ендік</string>
+    <string name="sos_widget_longitude">Бойлық</string>
+    <string name="sos_widget_latitude_and_longitude">Ендік: %1$f\nБойлық: %2$f</string>
+    <string name="sos_widget_location_accuracy">Дәлдік: %.2f м</string>
+    <string name="sos_widget_location_elapsed_time">Өткен уақыт: %s</string>
 
     <string name="sos_widget_connection_in_progress">Операторға қосылу</string>
     <string name="sos_widget_waiting_for_call_agent">Операторды күту</string>

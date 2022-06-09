@@ -1,6 +1,7 @@
 package kz.gov.mia.sos.widget.ui.presentation.home
 
 import kz.inqbox.sdk.domain.model.call.type.CallType
+import kz.inqbox.sdk.domain.model.geo.Location
 
 object HomeScreen {
 
@@ -52,6 +53,11 @@ object HomeScreen {
 
     sealed interface Route {
         object Back : Route
+
+        data class LocationDetails constructor(
+            val displayAddress: String,
+            val location: Location
+        ) : Route
 
         data class Call constructor(
             val callType: CallType,

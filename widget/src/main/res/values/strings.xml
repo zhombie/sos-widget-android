@@ -5,6 +5,10 @@
     <string name="sos_widget_no">No</string>
     <string name="sos_widget_cancel">Cancel</string>
 
+    <string name="sos_widget_refresh">Refresh</string>
+    <string name="sos_widget_copy">Copy</string>
+    <string name="sos_widget_close">Close</string>
+
     <string name="sos_widget_my_geolocation">My geolocation</string>
     <string name="sos_widget_text_chat">Text chat</string>
     <string name="sos_widget_map">Map</string>
@@ -78,6 +82,12 @@
 
     <string name="sos_widget_button_title">Need emergency help?</string>
     <string name="sos_widget_button_subtitle">Press the button to call</string>
+
+    <string name="sos_widget_latitude">Latitude</string>
+    <string name="sos_widget_longitude">Longitude</string>
+    <string name="sos_widget_latitude_and_longitude">Latitude: %1$f\nLongitude: %2$f</string>
+    <string name="sos_widget_location_accuracy">Accuracy: %.2f m</string>
+    <string name="sos_widget_location_elapsed_time">Elapsed time: %s</string>
 
     <string name="sos_widget_connection_in_progress">Connecting to operator</string>
     <string name="sos_widget_waiting_for_call_agent">Waiting for operator</string>

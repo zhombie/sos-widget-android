@@ -3,10 +3,12 @@ package kz.gov.mia.sos.widget.ui.presentation.home
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresPermission
@@ -17,6 +19,7 @@ import com.google.android.material.textview.MaterialTextView
 import kz.garage.activity.toast.toast
 import kz.garage.activity.view.bind
 import kz.garage.animation.scale.setScaleAnimationOnClick
+import kz.garage.context.system.service.clipboardManager
 import kz.garage.kotlin.simpleNameOf
 import kz.gov.mia.sos.widget.R
 import kz.gov.mia.sos.widget.api.SOSWidget
@@ -33,6 +36,7 @@ import kz.gov.mia.sos.widget.ui.presentation.call.CallActivity
 import kz.gov.mia.sos.widget.ui.presentation.home.vm.HomeViewModel
 import kz.gov.mia.sos.widget.utils.createApplicationSettingsIntent
 import kz.gov.mia.sos.widget.utils.createLocationSettingsIntent
+import kz.gov.mia.sos.widget.utils.location.getDisplayElapsedTime
 import kz.gov.mia.sos.widget.utils.setupActionBar
 import kz.inqbox.sdk.socket.Socket
 import kz.inqbox.sdk.webrtc.WebRTC
@@ -65,6 +69,7 @@ class HomeActivity : BaseActivity() {
     )
 
     private val toolbar by bind<MaterialToolbar>(R.id.toolbar)
+    private val locationView by bind<LinearLayout>(R.id.locationView)
     private val locationValueView by bind<MaterialTextView>(R.id.locationValueView)
     private val sosButton by bind<ShapeableImageView>(R.id.sosButton)
     private val progressView by bind<SOSWidgetProgressView>(R.id.progressView)
@@ -183,6 +188,7 @@ class HomeActivity : BaseActivity() {
 
         setupBaseUrl()
         setupActionBar()
+        setupLocationView()
         setupSOSButton()
 
         observeState()
@@ -252,6 +258,12 @@ class HomeActivity : BaseActivity() {
 
     private fun setupActionBar() {
         setupActionBar(toolbar) { finish() }
+    }
+
+    private fun setupLocationView() {
+        locationView.setOnClickListener {
+            viewModel?.onLocationShow()
+        }
     }
 
     private fun setupSOSButton() {
@@ -331,6 +343,56 @@ class HomeActivity : BaseActivity() {
             when (route) {
                 HomeScreen.Route.Back -> {
                     super.onBackPressed()
+                }
+                is HomeScreen.Route.LocationDetails -> {
+                    alertDialog?.dismiss()
+                    alertDialog = null
+
+                    var text = route.displayAddress
+
+                    text += "\n\n" + getString(
+                        R.string.sos_widget_latitude_and_longitude,
+                        route.location.latitude,
+                        route.location.longitude
+                    )
+
+                    if (route.location.xAccuracyMeters != null) {
+                        text += "\n" + getString(
+                            R.string.sos_widget_location_accuracy,
+                            route.location.xAccuracyMeters
+                        )
+                    }
+
+                    text += "\n" + getString(
+                        R.string.sos_widget_location_elapsed_time,
+                        route.location.getDisplayElapsedTime()
+                    )
+
+                    alertDialog = ThemedAlertDialog.Builder(this)
+                        .setCancelable(true)
+                        .setTitle(R.string.sos_widget_my_geolocation)
+                        .setMessage(text)
+                        .setNeutralButton(R.string.sos_widget_close) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .setNegativeButton(R.string.sos_widget_refresh) { dialog, _ ->
+                            dialog.dismiss()
+
+                            viewModel?.onRefreshLocationDataRequested()
+                        }
+                        .setPositiveButton(R.string.sos_widget_copy) { dialog, _ ->
+                            dialog.dismiss()
+
+                            clipboardManager?.setPrimaryClip(
+                                ClipData
+                                    .newPlainText(
+                                        getString(R.string.sos_widget_message),
+                                        route.displayAddress
+                                    )
+                            )
+                            toast(R.string.sos_widget_copied)
+                        }
+                        .show()
                 }
                 is HomeScreen.Route.Call -> {
                     startActivity(
