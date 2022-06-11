@@ -15,9 +15,8 @@ import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RawRes
+import androidx.annotation.StringRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.children
-import androidx.core.view.isEmpty
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
@@ -64,6 +63,7 @@ import kz.inqbox.sdk.socket.model.Card102Status
 import kz.inqbox.sdk.webrtc.core.ui.SurfaceViewRenderer
 import java.io.IOException
 import kotlin.math.roundToInt
+import kotlin.properties.Delegates
 
 class CallActivity : BaseActivity() {
 
@@ -95,6 +95,11 @@ class CallActivity : BaseActivity() {
         const val CALL_TYPE = "call_type"
         const val CALL_TOPIC = "call_topic"
     }
+
+    class CallMenuItem constructor(
+        val isEnabled: Boolean,
+        @StringRes val title: Int,
+    )
 
     private val rootLayout by bind<CoordinatorLayout>(R.id.rootLayout)
     private val toolbar by bind<MaterialToolbar>(R.id.toolbar)
@@ -262,6 +267,15 @@ class CallActivity : BaseActivity() {
             }
         }
 
+    private var menuItem by Delegates.observable(
+        CallMenuItem(
+            title = R.string.sos_widget_cancel_pending_call,
+            isEnabled = true
+        )
+    ) { _, old, new ->
+        if (new != old) invalidateOptionsMenu()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sos_widget_activity_call)
@@ -355,13 +369,16 @@ class CallActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         Logger.debug(TAG, "onCreateOptionsMenu() -> $menu")
-        this.menu = menu
         menuInflater.inflate(R.menu.sos_widget_call, menu)
-        return true
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         Logger.debug(TAG, "onPrepareOptionsMenu() -> $menu")
+        menu?.findItem(R.id.hangupCall)?.let {
+            it.isEnabled = menuItem.isEnabled
+            it.setTitle(menuItem.title)
+        }
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -369,13 +386,7 @@ class CallActivity : BaseActivity() {
         Logger.debug(TAG, "onOptionsItemSelected() -> $item")
         return when (item.itemId) {
             R.id.hangupCall -> {
-                ThemedAlertDialog.CallHangupConfirmation(this)
-                    .build(
-                        positive = {
-                            viewModel?.onHangupLiveCall()
-                        }
-                    )
-                    .show()
+                viewModel?.onHangupLiveCallPressed()
                 true
             }
             else ->
@@ -653,6 +664,15 @@ class CallActivity : BaseActivity() {
     private fun observeMessage() {
         viewModel?.getMessage()?.observe(this, { message ->
             when (message) {
+                is CallScreen.Message.Call.CancelConfirmation -> {
+                    ThemedAlertDialog.CallCancellationConfirmation(this)
+                        .build(
+                            positive = {
+                                viewModel?.onHangupLiveCall()
+                            }
+                        )
+                        .show()
+                }
                 is CallScreen.Message.Call.HangupConfirmation -> {
                     ThemedAlertDialog.CallHangupConfirmation(this)
                         .build(
@@ -803,13 +823,6 @@ class CallActivity : BaseActivity() {
         viewModel?.getCallState()?.observe(this, { callState ->
             Logger.debug(TAG, "getCallState() -> callState: $callState")
 
-            Logger.debug(
-                TAG,
-                "getCallState() -> menu?.findItem(R.id.hangupButton): ${menu?.isEmpty()}, ${menu?.children}, ${
-                    menu?.findItem(R.id.hangupButton)
-                }"
-            )
-
             if (callState.isStarted) {
                 toggleButton.visibility = View.VISIBLE
             } else {
@@ -819,12 +832,10 @@ class CallActivity : BaseActivity() {
             when (callState) {
                 is CallState.Pending -> {
                     // Menu
-                    menu?.findItem(R.id.hangupCall)?.run {
-                        if (!isEnabled) {
-                            isEnabled = true
-                        }
-                        setTitle(R.string.sos_widget_cancel_pending_call)
-                    }
+                    menuItem = CallMenuItem(
+                        isEnabled = true,
+                        title = R.string.sos_widget_cancel_pending_call
+                    )
 
                     // Call status
                     statusView.setText(R.string.sos_widget_connection_in_progress)
@@ -844,12 +855,10 @@ class CallActivity : BaseActivity() {
                 }
                 is CallState.Live -> {
                     // Menu
-                    menu?.findItem(R.id.hangupCall)?.run {
-                        if (!isEnabled) {
-                            isEnabled = true
-                        }
-                        setTitle(R.string.sos_widget_hangup_call)
-                    }
+                    menuItem = CallMenuItem(
+                        isEnabled = true,
+                        title = R.string.sos_widget_hangup_call
+                    )
 
                     // Call status
                     if (statusView.tag != "is_time_set") {
@@ -861,30 +870,26 @@ class CallActivity : BaseActivity() {
                     releaseMediaPlayer()
                 }
                 is CallState.UserRedirected -> {
-                    menu?.findItem(R.id.hangupCall)?.run {
-                        if (!isEnabled) {
-                            isEnabled = true
-                        }
-                        setTitle(R.string.sos_widget_hangup_call)
-                    }
+                    menuItem = CallMenuItem(
+                        isEnabled = true,
+                        title = R.string.sos_widget_hangup_call
+                    )
 
                     releaseMediaPlayer()
                 }
                 is CallState.Disconnected -> {
-                    menu?.findItem(R.id.hangupCall)?.run {
-                        if (!isEnabled) {
-                            isEnabled = false
-                        }
-                    }
+                    menuItem = CallMenuItem(
+                        isEnabled = false,
+                        title = R.string.sos_widget_hangup_call
+                    )
 
                     releaseMediaPlayer()
                 }
                 is CallState.Finished -> {
-                    menu?.findItem(R.id.hangupCall)?.run {
-                        if (!isEnabled) {
-                            isEnabled = false
-                        }
-                    }
+                    menuItem = CallMenuItem(
+                        isEnabled = false,
+                        title = R.string.sos_widget_hangup_call
+                    )
 
                     // Device volume control
                     volumeControlStream = AudioManager.USE_DEFAULT_STREAM_TYPE

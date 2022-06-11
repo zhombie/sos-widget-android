@@ -502,6 +502,10 @@ class CallViewModel constructor(
         }
     }
 
+    fun onHangupLiveCallPressed() {
+        decideCallHangup()
+    }
+
     fun onHangupLiveCall() {
         ui.launch {
             when (callState.value) {
@@ -532,22 +536,27 @@ class CallViewModel constructor(
     }
 
     fun onBackPressed() {
+        decideCallHangup()
+    }
+
+    private fun decideCallHangup() {
         ui.launch {
-            Logger.debug(TAG, "onBackPressed() -> callState: ${callState.value}")
+            Logger.debug(TAG, "decideCallHangup() -> callState: ${callState.value}")
 
-            if (callState.value == CallState.Pending ||
-                callState.value == CallState.Start ||
-                callState.value == CallState.Ready ||
-                callState.value == CallState.Live ||
-                callState.value == CallState.UserRedirected
-            ) {
-                message.value = CallScreen.Message.Call.HangupConfirmation
-            } else {
-                closeLiveCall(true)
+            when (callState.value) {
+                CallState.Pending -> {
+                    message.value = CallScreen.Message.Call.CancelConfirmation
+                }
+                CallState.Start, CallState.Ready, CallState.Live, CallState.UserRedirected -> {
+                    message.value = CallScreen.Message.Call.HangupConfirmation
+                }
+                else -> {
+                    closeLiveCall(true)
 
-                callState.value = CallState.Finished
+                    callState.value = CallState.Finished
 
-                route.value = CallScreen.Route.Back
+                    route.value = CallScreen.Route.Back
+                }
             }
         }
     }

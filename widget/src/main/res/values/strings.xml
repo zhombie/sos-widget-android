@@ -44,7 +44,8 @@
     <string name="sos_widget_location">Location</string>
     <string name="sos_widget_to_settings">To Settings</string>
 
-    <string name="sos_widget_user_confirmation_end_call">Are you sure you want to end the dialogue?</string>
+    <string name="sos_widget_user_confirmation_cancel_call">Are you sure you want to cancel the call?</string>
+    <string name="sos_widget_user_confirmation_end_call">Are you sure you want to end the call?</string>
 
     <string name="sos_widget_request_welcome_gps_enable">Please enable "Location" function before using the application</string>
     <string name="sos_widget_request_gps_enable">Please enable "Location" function to provide stable application performance</string>

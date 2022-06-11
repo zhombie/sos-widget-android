@@ -12,12 +12,14 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private var changeLocaleButton: MaterialButton? = null
+    private var launchWidgetButton: SOSWidgetExtendedFAB? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         changeLocaleButton = findViewById(R.id.changeLocaleButton)
+        launchWidgetButton = findViewById(R.id.launchWidgetButton)
 
         changeLocaleButton?.text = "Change locale: " + SOSWidgetLocaleManager.getLocale()
 
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
-        findViewById<SOSWidgetExtendedFAB>(R.id.launchWidgetButton).setOnClickListener {
+        launchWidgetButton?.setOnClickListener {
             launchWidget()
         }
     }

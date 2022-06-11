@@ -24,6 +24,29 @@ internal sealed interface ThemedAlertDialog {
         positive: (() -> Unit)? = null,
     ): MaterialAlertDialogBuilder
 
+    class CallCancellationConfirmation constructor(
+        private val context: Context
+    ) : ThemedAlertDialog {
+
+        override fun build(
+            negative: (() -> Unit)?,
+            positive: (() -> Unit)?
+        ): MaterialAlertDialogBuilder {
+            return Builder(context)
+                .setTitle(R.string.sos_widget_attention)
+                .setMessage(R.string.sos_widget_user_confirmation_cancel_call)
+                .setNegativeButton(R.string.sos_widget_no) { dialog, _ ->
+                    dialog.dismiss()
+                    negative?.invoke()
+                }
+                .setPositiveButton(R.string.sos_widget_yes) { dialog, _ ->
+                    dialog.dismiss()
+                    positive?.invoke()
+                }
+        }
+
+    }
+
     class CallHangupConfirmation constructor(
         private val context: Context
     ) : ThemedAlertDialog {

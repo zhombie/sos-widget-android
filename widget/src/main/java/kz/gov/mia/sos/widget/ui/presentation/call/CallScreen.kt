@@ -17,6 +17,7 @@ object CallScreen {
 
     sealed interface Message {
         sealed interface Call : Message {
+            object CancelConfirmation : Call
             object HangupConfirmation : Call
         }
 
