@@ -59,6 +59,8 @@
         app:fontFamily="sans-serif"
         tools:text="988b8432qskdjfgsk34563646098a1.jpg" />
 
+    <!-- TODO: Margin negative values are hack & it's bad practice,
+          but without them the Slider takes too much space -->
     <com.google.android.material.slider.Slider
         android:id="@+id/slider"
         android:layout_width="0dp"
@@ -66,8 +68,11 @@
         android:layout_below="@id/titleView"
         android:layout_alignStart="@id/titleView"
         android:layout_alignEnd="@id/titleView"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="-7.5dp"
+        android:layout_marginTop="-7.5dp"
+        android:layout_marginBottom="-7.5dp"
         android:padding="0dp"
+        app:labelBehavior="gone"
         app:thumbColor="@color/sos_widget_purple_blue"
         app:thumbElevation="0dp"
         app:thumbRadius="7dp"
@@ -80,10 +85,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/slider"
-        android:layout_alignStart="@id/slider"
+        android:layout_alignStart="@id/titleView"
         android:layout_marginEnd="15dp"
         android:ellipsize="end"
-        android:includeFontPadding="true"
+        android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
         android:textColor="@color/sos_widget_dark_gray"
@@ -103,7 +108,7 @@
         android:layout_toEndOf="@id/playbackTimeView"
         android:ellipsize="end"
         android:gravity="end"
-        android:includeFontPadding="true"
+        android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
         android:textColor="@color/sos_widget_dark_gray"

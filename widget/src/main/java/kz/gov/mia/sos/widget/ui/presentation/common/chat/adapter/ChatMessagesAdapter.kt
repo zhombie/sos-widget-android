@@ -23,7 +23,7 @@ import kz.gov.mia.sos.widget.domain.model.isNullableTextMessageWithImages
 import kz.gov.mia.sos.widget.domain.model.isNullableTextMessageWithVideos
 import kz.gov.mia.sos.widget.ui.model.DownloadState
 import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.*
-import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.base.BaseAudioMessageViewHolder
+import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.base.BaseAudioPlayerViewHolder
 import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.base.BaseDocumentMessageViewHolder
 import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.base.BaseRichContentMessageViewHolder
 
@@ -309,7 +309,7 @@ internal class ChatMessagesAdapter constructor(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val entity = getItem(position)
 
-//        Logger.debug(TAG, "onBindViewHolder() -> holder: $holder, entity: $entity")
+        Logger.debug(TAG, "onBindViewHolder() -> holder: $holder, entity: $entity")
 
         when (holder) {
             is OutgoingTextMessageViewHolder -> if (entity is Message) holder.bind(entity)
@@ -356,19 +356,19 @@ internal class ChatMessagesAdapter constructor(
                     }
                 }
                 Action.SET_AUDIO_PLAYBACK_STATE ->
-                    if (holder is BaseAudioMessageViewHolder) {
+                    if (holder is BaseAudioPlayerViewHolder) {
                         holder.setAudioPlaybackState(payload.getBoolean(PayloadKey.IS_PLAYING))
                     } else {
                         super.onBindViewHolder(holder, position, payloads)
                     }
                 Action.RESET_AUDIO_PLAYBACK_STATE ->
-                    if (holder is BaseAudioMessageViewHolder) {
+                    if (holder is BaseAudioPlayerViewHolder) {
                         holder.resetAudioPlaybackState(payload.getLong(PayloadKey.DURATION))
                     } else {
                         super.onBindViewHolder(holder, position, payloads)
                     }
                 Action.SET_AUDIO_PLAY_PROGRESS ->
-                    if (holder is BaseAudioMessageViewHolder) {
+                    if (holder is BaseAudioPlayerViewHolder) {
                         holder.setAudioPlayProgress(
                             currentPosition = payload.getLong(PayloadKey.CURRENT_POSITION),
                             duration = payload.getLong(PayloadKey.DURATION),

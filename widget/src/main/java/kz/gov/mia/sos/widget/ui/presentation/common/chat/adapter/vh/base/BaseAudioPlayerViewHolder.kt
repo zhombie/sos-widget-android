@@ -34,6 +34,10 @@ internal abstract class BaseAudioPlayerViewHolder constructor(
 
                 playbackTimeText = formatAudioProgress(0, 0)
 
+                if (!isPlaybackTimeVisible) {
+                    isPlaybackTimeVisible = true
+                }
+
                 setOnClickListener {
                     callback?.onAudioClicked(audio, absoluteAdapterPosition)
                 }
@@ -72,17 +76,30 @@ internal abstract class BaseAudioPlayerViewHolder constructor(
             sliderProgress = 0F
 
             playbackTimeText = formatAudioProgress(0, duration)
+
+            if (!isPlaybackTimeVisible) {
+                isPlaybackTimeVisible = true
+            }
         }
     }
 
     fun setAudioPlayProgress(currentPosition: Long, duration: Long, progress: Float) {
         Logger.debug(
             TAG, "setAudioPlayProgress() -> " +
-                "currentPosition: $currentPosition, " +
-                "duration: $duration, " +
-                "progress: $progress")
+                    "currentPosition: $currentPosition, " +
+                    "duration: $duration, " +
+                    "progress: $progress"
+        )
 
         with(audioPlayerView) {
+            Logger.debug(
+                TAG, "setAudioPlayProgress() -> " +
+                        "minSliderValue: $minSliderValue, " +
+                        "maxSliderValue: $maxSliderValue"
+            )
+
+            minSliderValue = 0F
+            maxSliderValue = 100F
             sliderProgress = progress
 
             setIconImageResource(
@@ -91,6 +108,10 @@ internal abstract class BaseAudioPlayerViewHolder constructor(
             )
 
             playbackTimeText = formatAudioProgress(currentPosition, duration)
+
+            if (!isPlaybackTimeVisible) {
+                isPlaybackTimeVisible = true
+            }
         }
     }
 

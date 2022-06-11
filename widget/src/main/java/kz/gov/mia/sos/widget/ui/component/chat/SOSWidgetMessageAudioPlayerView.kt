@@ -241,10 +241,8 @@ internal class SOSWidgetMessageAudioPlayerView @JvmOverloads constructor(
         get() = slider.value
         set(value) {
             field = value
-            try {
+            if (value >= slider.valueFrom && value <= slider.valueTo) {
                 slider.value = value
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
         }
 
