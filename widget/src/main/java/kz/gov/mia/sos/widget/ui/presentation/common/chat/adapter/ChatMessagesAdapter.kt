@@ -3,7 +3,6 @@ package kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kz.garage.chat.model.Entity
 import kz.garage.chat.model.Message
@@ -31,19 +30,19 @@ internal class ChatMessagesAdapter constructor(
     companion object {
         private val TAG = simpleNameOf<ChatMessagesAdapter>()
 
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Entity>() {
-            override fun areItemsTheSame(oldItem: Entity, newItem: Entity): Boolean =
-                oldItem.id == newItem.id
-
-            override fun areContentsTheSame(oldItem: Entity, newItem: Entity): Boolean =
-                if (oldItem is Message && newItem is Message) {
-                    oldItem == newItem
-                } else if (oldItem is Notification && newItem is Notification) {
-                    oldItem == newItem
-                } else {
-                    oldItem.id == newItem.id && oldItem.createdAt == newItem.createdAt
-                }
-        }
+//        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Entity>() {
+//            override fun areItemsTheSame(oldItem: Entity, newItem: Entity): Boolean =
+//                oldItem.id == newItem.id
+//
+//            override fun areContentsTheSame(oldItem: Entity, newItem: Entity): Boolean =
+//                if (oldItem is Message && newItem is Message) {
+//                    oldItem == newItem
+//                } else if (oldItem is Notification && newItem is Notification) {
+//                    oldItem == newItem
+//                } else {
+//                    oldItem.id == newItem.id && oldItem.createdAt == newItem.createdAt
+//                }
+//        }
     }
 
     // TODO: Support separate ReplyMarkup message
