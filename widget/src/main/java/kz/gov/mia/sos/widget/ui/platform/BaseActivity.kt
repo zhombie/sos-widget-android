@@ -2,7 +2,7 @@ package kz.gov.mia.sos.widget.ui.platform
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.Menu
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import kz.garage.context.location.manager.isLocationEnabled
 import kz.garage.kotlin.simpleNameOf
@@ -23,11 +23,9 @@ abstract class BaseActivity : ResourceActivity() {
     internal val injection: Injection
         get() = Injection.getInstance(this)
 
-    // Menu
-    protected var menu: Menu? = null
-
     // UI dialogs
     protected var alertDialog: androidx.appcompat.app.AlertDialog? = null
+    protected var bottomSheetDialogFragment: BottomSheetDialogFragment? = null
     protected var snackbar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,16 +50,6 @@ abstract class BaseActivity : ResourceActivity() {
     }
 
     override fun onPause() {
-        super.onPause()
-
-        logLifecycleEvent("onPause")
-    }
-
-    override fun onDestroy() {
-        logLifecycleEvent("onDestroy")
-
-        menu = null
-
         try {
             alertDialog?.dismiss()
         } catch (e: IllegalStateException) {
@@ -69,10 +57,26 @@ abstract class BaseActivity : ResourceActivity() {
             alertDialog = null
         }
 
+        try {
+            bottomSheetDialogFragment?.dismiss()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            bottomSheetDialogFragment = null
+        }
+
         snackbar?.dismiss()
         snackbar = null
 
+        super.onPause()
+
+        logLifecycleEvent("onPause")
+    }
+
+    override fun onDestroy() {
         super.onDestroy()
+
+        logLifecycleEvent("onDestroy")
     }
 
     override fun onSetLocale(locale: Locale) {

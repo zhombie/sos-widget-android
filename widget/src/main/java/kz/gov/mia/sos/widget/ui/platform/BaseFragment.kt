@@ -2,7 +2,6 @@ package kz.gov.mia.sos.widget.ui.platform
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -11,6 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import kz.garage.kotlin.simpleNameOf
 import kz.gov.mia.sos.widget.core.logging.Logger
+import kz.gov.mia.sos.widget.di.Injection
 import kz.gov.mia.sos.widget.ui.platform.resource.ResourceFragment
 
 abstract class BaseFragment constructor(
@@ -23,11 +23,8 @@ abstract class BaseFragment constructor(
 
     constructor() : this(0)
 
-//    val injection: Injection
-//        get() = Injection.getInstance(requireContext())
-
-    // Menu
-    protected var menu: Menu? = null
+    internal val injection: Injection
+        get() = Injection.getInstance(requireContext())
 
     // UI dialogs
     protected var alertDialog: AlertDialog? = null
@@ -68,17 +65,10 @@ abstract class BaseFragment constructor(
     }
 
     override fun onPause() {
-        super.onPause()
-
-        logLifecycleEvent("onPause")
-    }
-
-    override fun onDestroyView() {
-        menu = null
-
         try {
             alertDialog?.dismiss()
         } catch (e: IllegalStateException) {
+            e.printStackTrace()
         } finally {
             alertDialog = null
         }
@@ -86,6 +76,7 @@ abstract class BaseFragment constructor(
         try {
             bottomSheetDialogFragment?.dismiss()
         } catch (e: Exception) {
+            e.printStackTrace()
         } finally {
             bottomSheetDialogFragment = null
         }
@@ -93,6 +84,12 @@ abstract class BaseFragment constructor(
         snackbar?.dismiss()
         snackbar = null
 
+        super.onPause()
+
+        logLifecycleEvent("onPause")
+    }
+
+    override fun onDestroyView() {
         super.onDestroyView()
 
         logLifecycleEvent("onDestroyView")
