@@ -39,10 +39,13 @@ internal class ChatMessagesAdapterItemDecoration constructor(
 
             when (chatMessagesAdapter?.getItemViewType(position)) {
                 ChatMessagesAdapter.ViewType.NOTIFICATION -> {
+                    outRect.top = notificationVerticalMargin
                     outRect.bottom = notificationVerticalMargin
                 }
-                else ->
+                else -> {
+                    outRect.top = messageVerticalSpacing
                     outRect.bottom = messageVerticalSpacing
+                }
             }
         }
     }

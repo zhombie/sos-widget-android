@@ -13,8 +13,8 @@
     <dimen name="sos_widget_dialog_horizontal_padding">24dp</dimen>
 
     <dimen name="sos_widget_message_horizontal_margin">50dp</dimen>
-    <dimen name="sos_widget_message_vertical_margin">10dp</dimen>
-    <dimen name="sos_widget_notification_vertical_margin">25dp</dimen>
+    <dimen name="sos_widget_message_vertical_margin">5dp</dimen>
+    <dimen name="sos_widget_notification_vertical_margin">20dp</dimen>
     <dimen name="sos_widget_message_background_corner_radius">8.3dp</dimen>
     <dimen name="sos_widget_message_media_horizontal_padding">10dp</dimen>
     <dimen name="sos_widget_message_media_vertical_padding">10dp</dimen>
