@@ -997,7 +997,11 @@ class CallActivity : BaseActivity() {
                     snackbar = Snackbar.make(
                         this,
                         rootLayout,
-                        message.body ?: getString(R.string.sos_widget_new_message),
+                        if (message.body.isNullOrBlank()) {
+                            getString(R.string.sos_widget_new_message)
+                        } else {
+                            requireNotNull(message.body)
+                        },
                         Snackbar.LENGTH_LONG
                     ).apply {
                         if (toggleCameraButton.visibility == View.VISIBLE) {
@@ -1007,6 +1011,8 @@ class CallActivity : BaseActivity() {
                             animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
                         }
                         setBackgroundTint(getColorCompat(R.color.sos_widget_black_alpha))
+                        setTextColor(getColorCompat(R.color.sos_widget_white))
+                        setTextMaxLines(2)
                         setActionTextColor(getColorCompat(R.color.sos_widget_white_alpha))
                         setAction(R.string.sos_widget_to_chat) { viewModel?.onGoToTextChat() }
                     }
@@ -1045,6 +1051,8 @@ class CallActivity : BaseActivity() {
                         animationMode = BaseTransientBottomBar.ANIMATION_MODE_SLIDE
                     }
                     setBackgroundTint(getColorCompat(R.color.sos_widget_black_alpha))
+                    setTextColor(getColorCompat(R.color.sos_widget_white))
+                    setTextMaxLines(2)
                     setActionTextColor(getColorCompat(R.color.sos_widget_white_alpha))
                     setAction(R.string.sos_widget_to_map) { viewModel?.onGoToMap() }
                 }
