@@ -11,7 +11,7 @@ internal sealed class Source constructor(
         override val title: String
     ) : Source(uri, title)
 
-    data class URL constructor(
+    data class RemoteFile constructor(
         override val uri: Uri,
         override val title: String
     ) : Source(uri, title)

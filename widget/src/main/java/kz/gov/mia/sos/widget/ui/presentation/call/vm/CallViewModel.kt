@@ -716,34 +716,39 @@ class CallViewModel constructor(
                 return@launch
             }
 
-            val url = content.remoteFile?.url
+            val url = URLManager.buildUrl(content.remoteFile?.url)
 
             if (url.isNullOrBlank()) {
                 message.value = CallScreen.Message.FileDownload.Failed
                 return@launch
             }
 
-            asyncHttpClient.download(outputFile, url) { downloadState ->
-                ui.launch {
-                    when (downloadState) {
-                        is kz.gov.mia.sos.widget.data.remote.http.file.DownloadState.Progress -> {
-                            this@CallViewModel.downloadState.value = DownloadState.Pending(
-                                content = content,
-                                progress = downloadState.progress,
-                                itemPosition = itemPosition
-                            )
-                        }
-                        is kz.gov.mia.sos.widget.data.remote.http.file.DownloadState.Success -> {
-                            this@CallViewModel.downloadState.value = DownloadState.Completed(
-                                content = content,
-                                itemPosition = itemPosition
-                            )
-                        }
-                        is kz.gov.mia.sos.widget.data.remote.http.file.DownloadState.Error -> {
-                            message.value = CallScreen.Message.FileDownload.Failed
+            try {
+                asyncHttpClient.download(outputFile, url) { downloadState ->
+                    ui.launch {
+                        when (downloadState) {
+                            is kz.gov.mia.sos.widget.data.remote.http.file.DownloadState.Progress -> {
+                                this@CallViewModel.downloadState.value = DownloadState.Pending(
+                                    content = content,
+                                    progress = downloadState.progress,
+                                    itemPosition = itemPosition
+                                )
+                            }
+                            is kz.gov.mia.sos.widget.data.remote.http.file.DownloadState.Success -> {
+                                this@CallViewModel.downloadState.value = DownloadState.Completed(
+                                    content = content,
+                                    itemPosition = itemPosition
+                                )
+                            }
+                            is kz.gov.mia.sos.widget.data.remote.http.file.DownloadState.Error -> {
+                                message.value = CallScreen.Message.FileDownload.Failed
+                            }
                         }
                     }
                 }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                message.value = CallScreen.Message.FileDownload.Failed
             }
         }
     }

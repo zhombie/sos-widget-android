@@ -21,6 +21,8 @@
         <attr name="sos_widget_theme_mode" />
         <attr name="android:background" />
         <attr name="sos_widget_title_text_color" />
+        <attr name="sos_widget_subtitle_text_color" format="color" />
+        <attr name="sos_widget_description_text_color" format="color" />
     </declare-styleable>
 
     <declare-styleable name="SOSWidgetMessageAudioPlayerView">

@@ -11,6 +11,7 @@ import kz.gov.mia.sos.widget.ui.component.chat.SOSWidgetMessageContentView
 import kz.gov.mia.sos.widget.ui.model.DownloadState
 import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.ChatMessagesAdapter
 import kz.inqbox.sdk.domain.model.content.representation
+import java.io.File
 import kotlin.math.roundToInt
 
 internal abstract class BaseContentViewHolder constructor(
@@ -30,16 +31,25 @@ internal abstract class BaseContentViewHolder constructor(
 
                 title = document.label
 
-                val file = DownloadAssistant.getDownloadableFile(context, document)
+                val file: File
+                if (document.publicFile?.exists() == true) {
+                    file = requireNotNull(document.publicFile?.requireFile())
 
-                if (file.exists()) {
                     description = context.getString(R.string.sos_widget_open_file)
 
                     setIconImageResource(R.drawable.sos_widget_ic_document_white)
                 } else {
-                    description = context.getString(R.string.sos_widget_file_download)
+                    file = DownloadAssistant.getDownloadableFile(context, document)
 
-                    setIconImageResource(R.drawable.sos_widget_ic_download_white)
+                    if (file.exists()) {
+                        description = context.getString(R.string.sos_widget_open_file)
+
+                        setIconImageResource(R.drawable.sos_widget_ic_document_white)
+                    } else {
+                        description = context.getString(R.string.sos_widget_file_download)
+
+                        setIconImageResource(R.drawable.sos_widget_ic_download_white)
+                    }
                 }
 
                 val subtitleBuilder = mutableListOf(

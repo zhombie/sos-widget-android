@@ -61,6 +61,18 @@ internal class SOSWidgetMessageContentView @JvmOverloads constructor(
                             Themes.getColor(context, Themes.Dark.titleTextColor)
                         )
                     )
+                    subtitleTextColor = ColorStateList.valueOf(
+                        it.getColor(
+                            R.styleable.SOSWidgetMessageContentView_sos_widget_subtitle_text_color,
+                            Themes.getColor(context, Themes.Dark.subtitleTextColor)
+                        )
+                    )
+                    descriptionTextColor = ColorStateList.valueOf(
+                        it.getColor(
+                            R.styleable.SOSWidgetMessageContentView_sos_widget_description_text_color,
+                            Themes.getColor(context, Themes.Dark.descriptionTextColor)
+                        )
+                    )
                 }
                 else -> {
                     background = it.getDrawable(R.styleable.SOSWidgetMessageContentView_android_background)
@@ -74,6 +86,18 @@ internal class SOSWidgetMessageContentView @JvmOverloads constructor(
                         it.getColor(
                             R.styleable.SOSWidgetMessageContentView_sos_widget_title_text_color,
                             Themes.getColor(context, Themes.Light.titleTextColor)
+                        )
+                    )
+                    subtitleTextColor = ColorStateList.valueOf(
+                        it.getColor(
+                            R.styleable.SOSWidgetMessageContentView_sos_widget_subtitle_text_color,
+                            Themes.getColor(context, Themes.Light.subtitleTextColor)
+                        )
+                    )
+                    descriptionTextColor = ColorStateList.valueOf(
+                        it.getColor(
+                            R.styleable.SOSWidgetMessageContentView_sos_widget_description_text_color,
+                            Themes.getColor(context, Themes.Light.descriptionTextColor)
                         )
                     )
                 }
@@ -107,6 +131,20 @@ internal class SOSWidgetMessageContentView @JvmOverloads constructor(
         set(value) {
             field = value
             titleView.setTextColor(value)
+        }
+
+    var subtitleTextColor: ColorStateList? = subtitleView.textColors
+        get() = subtitleView.textColors
+        set(value) {
+            field = value
+            subtitleView.setTextColor(value)
+        }
+
+    var descriptionTextColor: ColorStateList? = descriptionView.textColors
+        get() = descriptionView.textColors
+        set(value) {
+            field = value
+            descriptionView.setTextColor(value)
         }
 
     var title: CharSequence? = titleView.text
@@ -200,6 +238,12 @@ internal class SOSWidgetMessageContentView @JvmOverloads constructor(
         @get:ColorRes
         val titleTextColor: Int
 
+        @get:ColorRes
+        val subtitleTextColor: Int
+
+        @get:ColorRes
+        val descriptionTextColor: Int
+
         object Light : Themes {
             override val background: Int = R.drawable.sos_widget_ripple_top_left_rounded_transparent
 
@@ -210,6 +254,10 @@ internal class SOSWidgetMessageContentView @JvmOverloads constructor(
             override val progressIndicatorColor: Int = R.color.sos_widget_white
 
             override val titleTextColor: Int = R.color.sos_widget_light_black
+
+            override val subtitleTextColor: Int = R.color.sos_widget_light_black
+
+            override val descriptionTextColor: Int = R.color.sos_widget_purple_blue
         }
 
         object Dark : Themes {
@@ -222,6 +270,10 @@ internal class SOSWidgetMessageContentView @JvmOverloads constructor(
             override val progressIndicatorColor: Int = R.color.sos_widget_purple_blue
 
             override val titleTextColor: Int = R.color.sos_widget_white
+
+            override val subtitleTextColor: Int = R.color.sos_widget_white
+
+            override val descriptionTextColor: Int = R.color.sos_widget_white
         }
     }
 

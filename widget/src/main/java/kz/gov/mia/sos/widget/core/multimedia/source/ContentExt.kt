@@ -17,7 +17,7 @@ internal val Content.source: Source?
             if (url.isNullOrBlank()) {
                 null
             } else {
-                Source.URL(
+                Source.RemoteFile(
                     uri = Uri.parse(url),
                     title = label ?: url.split("/").last()
                 )
@@ -27,7 +27,7 @@ internal val Content.source: Source?
 
 internal val Content.sourceUri: Uri?
     get() = when (val source = source) {
-        is Source.LocalFile, is Source.URL ->
+        is Source.LocalFile, is Source.RemoteFile ->
             source.uri
         else ->
             null

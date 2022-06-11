@@ -295,7 +295,11 @@ class TextChatFragment : BaseFragment(R.layout.sos_widget_fragment_text_chat),
     }
 
     override fun onDocumentClicked(document: Document, itemPosition: Int) {
-        val file = DownloadAssistant.getDownloadableFile(requireContext(), document)
+        val file = if (document.publicFile?.exists() == true) {
+            requireNotNull(document.publicFile?.requireFile())
+        } else {
+            DownloadAssistant.getDownloadableFile(requireContext(), document)
+        }
 
         when (val openFile = FileUtils.openFile(requireContext(), file)) {
             is FileUtils.OpenFile.Success -> {
