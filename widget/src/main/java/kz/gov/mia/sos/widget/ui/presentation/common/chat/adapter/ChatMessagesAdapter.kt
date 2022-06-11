@@ -17,10 +17,6 @@ import kz.garage.multimedia.store.model.Video
 import kz.garage.view.inflater.inflate
 import kz.gov.mia.sos.widget.core.error.ViewHolderViewTypeException
 import kz.gov.mia.sos.widget.core.logging.Logger
-import kz.gov.mia.sos.widget.domain.model.isNullableTextMessageWithAudio
-import kz.gov.mia.sos.widget.domain.model.isNullableTextMessageWithDocuments
-import kz.gov.mia.sos.widget.domain.model.isNullableTextMessageWithImages
-import kz.gov.mia.sos.widget.domain.model.isNullableTextMessageWithVideos
 import kz.gov.mia.sos.widget.ui.model.DownloadState
 import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.*
 import kz.gov.mia.sos.widget.ui.presentation.common.chat.adapter.vh.base.BaseAudioPlayerViewHolder
